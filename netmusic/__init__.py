@@ -29,3 +29,4 @@ class PlayList(Request):
         data = get_params(item)
 
         response = super().request(self.endpoint, "POST", params=params, data=data)
+        return response

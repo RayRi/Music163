@@ -15,7 +15,7 @@ f = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17" 
     "2741d546b8e289dc6935b3ece0462db0a22b8e7"
 
 # 编译 JS 文件，以调用相关方法
-fpath = path.join(path.dirname(__file__), "../lib/node/decryptV2.js")
+fpath = path.join(path.dirname(__file__), "../lib/decryptV2.js")
 cwd = path.join(path.dirname(__file__), "../lib/node/node_modules")
 
 with open(fpath, "r", errors="ignore") as file:
