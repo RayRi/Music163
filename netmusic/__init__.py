@@ -1,5 +1,6 @@
 #coding:utf8
 
+import json
 from .utils.decrypt import get_params
 from .utils.base import Request
 
@@ -28,5 +29,28 @@ class PlayList(Request):
         item.update(params)
         data = get_params(item)
 
+        response = super().request(self.endpoint, "POST", params=params, data=data)
+        return response
+
+
+class Track(Request):
+    """
+    获取歌曲详情信息
+    """
+    def __init__(self) -> None:
+        self.endpoint = "/weapi/v3/song/detail"
+
+    
+    def request(self, ids):
+        """多任务请求歌曲详情"""
+        ids = ids if isinstance(ids, list) else [ids]
+        item = {"c": [{'id': str(id)} for id in ids]}
+        
+        # 请求参数
+        params = {"csrf_token": ""}
+        item.update(params)
+        
+        data = get_params(item)
+        
         response = super().request(self.endpoint, "POST", params=params, data=data)
         return response
