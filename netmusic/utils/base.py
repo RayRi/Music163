@@ -15,7 +15,7 @@ class Request:
         if "http" not in url:
             url = urllib.parse.urljoin(self.HOST, url)
         
-        response = requests.request(method, url, kwargs)
+        response = requests.request(method, url, **kwargs)
 
         if response.status_code != 200:
             raise requests.RequestException(f"请求异常，状态码为: {response.status_code}")
