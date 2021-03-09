@@ -44,13 +44,13 @@ class Track(Request):
     def request(self, ids):
         """多任务请求歌曲详情"""
         ids = ids if isinstance(ids, list) else [ids]
-        item = {"c": [{'id': str(id)} for id in ids]}
+        item = {"c": json.dumps([{'id': str(id)} for id in ids])}
         
         # 请求参数
         params = {"csrf_token": ""}
         item.update(params)
         
         data = get_params(item)
-        
+
         response = super().request(self.endpoint, "POST", params=params, data=data)
         return response
