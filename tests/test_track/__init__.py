@@ -27,9 +27,6 @@ class TrackTest(unittest.TestCase):
         self.assertEqual("/weapi/v3/song/detail", self.tr.endpoint, "解析歌曲属性信息不正确")
 
 
-    def test_request(self, response):
-        data = mock.Mock()
-        data.response.return_value = response
-
+    def test_request(self):
         res = self.tr.request(31040907)
         self.assertTrue("name" in res.text, "播放请求不正确")
